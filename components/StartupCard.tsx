@@ -37,7 +37,7 @@ const StartupCard = ({
           </Link>
 
           <Link href={`/startup/${_id}`}>
-            <h3 className="text-26-semibold line-clamp-1">
+            <h3 className="text-26-semibold line-clamp-1 break-all">
               {title}
             </h3>
           </Link>
@@ -53,6 +53,7 @@ const StartupCard = ({
           {description}
         </p>
 
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={image} alt="placeholder" className="startup-card_img" />
       </Link>
 
