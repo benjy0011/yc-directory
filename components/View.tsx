@@ -26,7 +26,7 @@ const View = async ({
       </div>
 
       <p className="view-text">
-        <span className="font-black">{totalViews} {+totalViews > 2 ? "views" : "view"}</span>
+        <span className="font-black">{totalViews ?? 0} {+totalViews > 2 ? "views" : "view"}</span>
       </p>
     </div>
   )

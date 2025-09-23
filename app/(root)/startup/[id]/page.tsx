@@ -32,7 +32,7 @@ export default async function Page({
 
   return (
     <>
-      <section className="pink_container min-h-[230px]">
+      <section className="pink_container !min-h-[230px]">
         <p className="tag">{formatDate(post._createdAt)}</p>
 
         <h1 className="heading">
@@ -46,7 +46,7 @@ export default async function Page({
         <img
           src={post.image!}
           alt="thumbnail"
-          className="w-full h-auto rounded-xl"
+          className="w-full md:max-w-[75vw] rounded-xl mx-auto"
         />
 
         <div className="space-y-5 mt-10 max-w-4xl mx-auto">
