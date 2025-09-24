@@ -16,7 +16,11 @@ const StartupForm = () => {
   const router = useRouter();
 
   const [ errors, setErrors ] = useState<Record<string, string>>({});
-  const [ pitch, setPitch ] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  const [link, setLink] = useState("");
+  const [pitch, setPitch] = useState("");
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleFormSubmit = async (prevState: any, formData: FormData) => {
@@ -91,6 +95,8 @@ const StartupForm = () => {
           className="startup-form_input"
           required
           placeholder="Startup Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
         {errors.title && <p className="startup-form_error">{errors.title}</p> }
 
@@ -107,6 +113,8 @@ const StartupForm = () => {
           className="startup-form_textarea"
           required
           placeholder="Startup Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
         {errors.description && <p className="startup-form_error">{errors.description}</p> }
 
@@ -123,6 +131,8 @@ const StartupForm = () => {
           className="startup-form_input"
           required
           placeholder="Startup Category (Tech, Health, Education ...)"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
         />
         {errors.category && <p className="startup-form_error">{errors.category}</p> }
 
@@ -139,6 +149,8 @@ const StartupForm = () => {
           className="startup-form_input"
           required
           placeholder="Startup Image URL"
+          value={link}
+          onChange={(e) => setLink(e.target.value)}
         />
         {errors.link && <p className="startup-form_error">{errors.link}</p> }
 
