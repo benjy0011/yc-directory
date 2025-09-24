@@ -1,9 +1,10 @@
-import { formatDate } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
 import { EyeIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "./ui/button"
 import { Author, Startup } from "@/sanity/types"
+import { Skeleton } from "./ui/skeleton"
 
 export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author };
 
@@ -44,7 +45,14 @@ const StartupCard = ({
         </div>
 
         <Link href={`/user/${author?._id}`} >
-          <Image src="https://placehold.co/48x48" alt="placeholder" width={48} height={48} className="rounded-full" />
+          <Image
+            // src="https://placehold.co/48x48"
+            src={author?.image ?? ''}
+            alt={author?.name ?? 'author'}
+            width={48}
+            height={48}
+            className="rounded-full"
+          />
         </Link>
       </div>
 
@@ -54,7 +62,7 @@ const StartupCard = ({
         </p>
 
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={image} alt="placeholder" className="startup-card_img" />
+        <img src={image} alt="start up image" className="startup-card_img" />
       </Link>
 
       <div className="flex-between gap-3 mt-5">
@@ -71,4 +79,14 @@ const StartupCard = ({
     </li>
   )
 }
+
+export const StartupCardSkeletion = () => (
+  <>
+    {[0, 1, 2, 3, 4].map((_, idx: number) => (
+      <li key={cn('skeleton', idx)}>
+        <Skeleton className="startup-card_skeleton"  />
+      </li>
+    ))}
+  </>
+)
 export default StartupCard
