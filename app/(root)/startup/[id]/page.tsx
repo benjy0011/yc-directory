@@ -25,10 +25,15 @@ export default async function Page({
 }) {
   const id = (await params).id;
 
-  const post: Post  = await client.fetch(STARTUP_BY_ID_QUERY, { id })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [ post, { select: editorPosts } ] = await Promise.all<[Promise<Post>, Promise<any>]>([
+    client.fetch(STARTUP_BY_ID_QUERY, { id }),
+    client.fetch(PLAYLIST_BY_SLUG_QUERY, { slug: 'editor-picks' }),
+  ])
 
-  const { select: editorPosts } = await client.fetch(PLAYLIST_BY_SLUG_QUERY, { slug: 'editor-picks' });
-  console.log(editorPosts)
+  // const post: Post  = await client.fetch(STARTUP_BY_ID_QUERY, { id })
+
+  // const { select: editorPosts } = await client.fetch(PLAYLIST_BY_SLUG_QUERY, { slug: 'editor-picks' });
 
   if(!post) return notFound();
 
